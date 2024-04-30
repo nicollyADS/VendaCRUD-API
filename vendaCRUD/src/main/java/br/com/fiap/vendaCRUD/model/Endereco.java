@@ -43,6 +43,9 @@ public class Endereco {
 
     //relacionamentos
     //usuario e endereco usuario
+    @ManyToOne
+    @JoinColumn(name="id_usuario", nullable = false)
+    private Usuario usuario;
 
 
     public Endereco(CadastroEnderecoDto enderecoDto) {

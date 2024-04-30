@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -33,6 +34,18 @@ public class Venda{
 
     //relacionamentos
     //venda e produto - tabela associativa
+    @ManyToMany
+    @JoinTable(name="T_PRODUTO_VENDA",
+            joinColumns = @JoinColumn(name="id_venda"),
+            inverseJoinColumns = @JoinColumn(name="id_produto"))
+    private List<Produto> produtos;
+
+
+    //venda e usuario
+    @ManyToOne
+    @JoinColumn(name="id_usuario", nullable = false)
+    private Usuario usuario;
+
 
 
     public Venda(CadastroVendaDto vendaDto) {

@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,6 +34,8 @@ public class Fornecedor {
 
     //relacionamentos
     //fornecedor e produto
+    @OneToMany(mappedBy = "fornecedor")
+    private List<Produto> produtos;
 
 
     public Fornecedor(CadastroFornecedorDto fornecedorDto) {

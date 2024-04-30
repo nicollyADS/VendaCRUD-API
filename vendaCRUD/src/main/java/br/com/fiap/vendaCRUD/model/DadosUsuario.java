@@ -36,6 +36,8 @@ public class DadosUsuario {
 
 
      //relacionamentos
-
     //usuario e dados usuario
+    @OneToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario usuario;
 }

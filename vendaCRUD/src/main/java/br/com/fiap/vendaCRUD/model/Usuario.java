@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,9 +36,19 @@ public class Usuario {
     private String senha;
 
     //relacionamentos
+
     //usuario e dados usuario
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private DadosUsuario dadosUsuario;
+
     //usuario e endereco
+    @OneToMany(mappedBy = "usuario")
+    private List<Endereco> enderecos;
+
     //usuario e venda
+    @OneToMany(mappedBy = "usuario")
+    private List<Venda> vendas;
+
 
     public Usuario(CadastroUsuarioDto usuarioDto) {
         nome = usuarioDto.nome();
