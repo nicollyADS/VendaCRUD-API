@@ -63,4 +63,12 @@ public class UsuarioController {
         usuario.atualizarInformacoesUsuario(dto);
         return ResponseEntity.ok(new DetalhesUsuarioDto(usuario));
     }
+
+    // GET USUARIO ENDERECO
+
+    // POST USUARIO ENDERECO
+
+    // GET USUARIO VENDA
+
+    // POST USUARIO VENDA
 }

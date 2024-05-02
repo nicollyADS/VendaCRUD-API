@@ -16,7 +16,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name="T_ENDERECO")
-@EntityListeners(AuditingEntityListener.class)
 public class Endereco {
 
     @Id

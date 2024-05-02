@@ -1,8 +1,8 @@
 package br.com.fiap.vendaCRUD.dto.vendaDto;
 import br.com.fiap.vendaCRUD.model.Venda;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public record DetalhesVendaDto(Long id, Integer quantidade, LocalDate dataVenda) {
+public record DetalhesVendaDto(Long id, Integer quantidade, LocalDateTime dataVenda) {
 
     public DetalhesVendaDto(Venda venda){
         this(venda.getId(), venda.getQuantidade(), venda.getDataVenda() );

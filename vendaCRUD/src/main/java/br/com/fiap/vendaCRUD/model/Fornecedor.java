@@ -16,7 +16,6 @@ import java.util.List;
 
 @Entity
 @Table(name="T_FORNECEDOR")
-@EntityListeners(AuditingEntityListener.class)
 public class Fornecedor {
 
     @Id

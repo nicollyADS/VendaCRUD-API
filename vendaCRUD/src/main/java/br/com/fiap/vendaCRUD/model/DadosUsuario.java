@@ -2,6 +2,7 @@ package br.com.fiap.vendaCRUD.model;
 
 import br.com.fiap.vendaCRUD.dto.enderecoDto.AtualizacaoEnderecoDto;
 import br.com.fiap.vendaCRUD.dto.enderecoDto.CadastroEnderecoDto;
+import br.com.fiap.vendaCRUD.dto.usuarioDto.CadastroUsuarioDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,6 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name="T_DADOS_USUARIO")
-@EntityListeners(AuditingEntityListener.class)
 public class DadosUsuario {
 
      @Id
@@ -40,4 +40,11 @@ public class DadosUsuario {
     @OneToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
+
+
+    public DadosUsuario(CadastroUsuarioDto usuarioDto){
+        dataNascimento = usuarioDto.dataNascimento();
+        telefone = usuarioDto.telefone();
+        sexoBiologico = usuarioDto.sexoBiologico();
+    }
 }

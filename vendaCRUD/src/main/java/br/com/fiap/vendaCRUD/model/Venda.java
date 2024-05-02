@@ -6,9 +6,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -29,8 +31,9 @@ public class Venda{
     @Column(name="qt_venda",  nullable = false)
     private Integer quantidade;
 
+    @CreatedDate
     @Column(name="dt_venda",  nullable = false)
-    private LocalDate dataVenda;
+    private LocalDateTime dataVenda;
 
     //relacionamentos
     //venda e produto - tabela associativa
@@ -50,14 +53,11 @@ public class Venda{
 
     public Venda(CadastroVendaDto vendaDto) {
         quantidade = vendaDto.quantidade();
-        dataVenda = vendaDto.dataVenda();
     }
 
     public void atualizarInformacoesVenda(AtualizacaoVendaDto dto) {
         if (dto.quantidade() != null)
             quantidade = dto.quantidade();
-        if (dto.dataVenda() != null)
-            dataVenda = dto.dataVenda();
     }
 
 }

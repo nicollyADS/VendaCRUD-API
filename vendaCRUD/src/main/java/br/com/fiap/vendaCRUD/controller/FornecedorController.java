@@ -65,4 +65,9 @@ public class FornecedorController {
         return ResponseEntity.ok(new DetalhesFornecedorDto(fornecedor));
     }
 
+    //GET FORNECEDOR PRODUTO
+
+
+    //POST FORNECEDOR PRODUTO
+
 }

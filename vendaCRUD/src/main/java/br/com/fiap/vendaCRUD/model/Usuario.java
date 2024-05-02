@@ -17,7 +17,6 @@ import java.util.List;
 
 @Entity
 @Table(name="T_USUARIO")
-@EntityListeners(AuditingEntityListener.class)
 public class Usuario {
 
     @Id
@@ -54,6 +53,8 @@ public class Usuario {
         nome = usuarioDto.nome();
         email = usuarioDto.email();
         senha = usuarioDto.senha();
+        dadosUsuario = new DadosUsuario(usuarioDto);
+        dadosUsuario.setUsuario(this);
     }
 
     public void atualizarInformacoesUsuario(AtualizacaoUsuarioDto dto) {
@@ -63,6 +64,12 @@ public class Usuario {
             email = dto.email();
         if(dto.email() != null)
             senha = dto.senha();
+        if (dto.dataNascimento() != null)
+            dadosUsuario.setDataNascimento(dto.dataNascimento());
+        if (dto.telefone() != null)
+            dadosUsuario.setTelefone(dto.telefone());
+        if (dto.sexoBiologico() != null)
+            dadosUsuario.setSexoBiologico(dto.sexoBiologico());
     }
 
 

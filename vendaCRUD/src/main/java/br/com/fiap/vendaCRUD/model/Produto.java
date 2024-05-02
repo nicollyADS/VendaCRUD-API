@@ -16,7 +16,6 @@ import java.util.List;
 
 @Entity
 @Table(name="T_PRODUTO")
-@EntityListeners(AuditingEntityListener.class)
 public class Produto {
 
     @Id
