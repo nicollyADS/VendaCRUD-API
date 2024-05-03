@@ -3,8 +3,12 @@ package br.com.fiap.vendaCRUD.controller;
 import br.com.fiap.vendaCRUD.dto.fornecedorDto.AtualizacaoFornecedorDto;
 import br.com.fiap.vendaCRUD.dto.fornecedorDto.CadastroFornecedorDto;
 import br.com.fiap.vendaCRUD.dto.fornecedorDto.DetalhesFornecedorDto;
+import br.com.fiap.vendaCRUD.dto.produtoDto.CadastroProdutoDto;
+import br.com.fiap.vendaCRUD.dto.produtoDto.DetalhesProdutoDto;
 import br.com.fiap.vendaCRUD.model.Fornecedor;
+import br.com.fiap.vendaCRUD.model.Produto;
 import br.com.fiap.vendaCRUD.repository.FornecedorRepository;
+import br.com.fiap.vendaCRUD.repository.ProdutoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +24,9 @@ import java.util.List;
 public class FornecedorController {
     @Autowired
     private FornecedorRepository fornecedorRepository;
+
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
     //GET
     @GetMapping
@@ -65,9 +72,24 @@ public class FornecedorController {
         return ResponseEntity.ok(new DetalhesFornecedorDto(fornecedor));
     }
 
+    //POST FORNECEDOR PRODUTO
+    @PostMapping("{id}/produtos")
+    @Transactional
+    public ResponseEntity<DetalhesProdutoDto> post(@PathVariable("id") Long id,
+                                                       @RequestBody @Valid CadastroProdutoDto produtoDto,
+                                                       UriComponentsBuilder uriBuilder){
+        var fornecedor = fornecedorRepository.getReferenceById(id);
+        var produto = new Produto(produtoDto, fornecedor);
+        produtoRepository.save(produto);
+        var uri = uriBuilder.path("produtos/{id}").buildAndExpand(produto.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesProdutoDto(produto));
+    }
+
+
+
     //GET FORNECEDOR PRODUTO
 
 
-    //POST FORNECEDOR PRODUTO
+
 
 }

@@ -50,11 +50,12 @@ public class Produto {
     private List<Venda> vendas;
 
 
-    public Produto(CadastroProdutoDto produtoDto) {
+    public Produto(CadastroProdutoDto produtoDto, Fornecedor fornecedor) {
         nome = produtoDto.nome();
         descricao = produtoDto.descricao();
         preco = produtoDto.preco();
         tipoProduto = produtoDto.tipoProduto();
+        this.fornecedor = fornecedor;
     }
 
     public void atualizarInformacoesProduto(AtualizacaoProdutoDto dto) {

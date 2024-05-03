@@ -1,9 +1,17 @@
 package br.com.fiap.vendaCRUD.controller;
+import br.com.fiap.vendaCRUD.dto.enderecoDto.CadastroEnderecoDto;
+import br.com.fiap.vendaCRUD.dto.enderecoDto.DetalhesEnderecoDto;
 import br.com.fiap.vendaCRUD.dto.usuarioDto.AtualizacaoUsuarioDto;
 import br.com.fiap.vendaCRUD.dto.usuarioDto.CadastroUsuarioDto;
 import br.com.fiap.vendaCRUD.dto.usuarioDto.DetalhesUsuarioDto;
+import br.com.fiap.vendaCRUD.dto.vendaDto.CadastroVendaDto;
+import br.com.fiap.vendaCRUD.dto.vendaDto.DetalhesVendaDto;
+import br.com.fiap.vendaCRUD.model.Endereco;
 import br.com.fiap.vendaCRUD.model.Usuario;
+import br.com.fiap.vendaCRUD.model.Venda;
+import br.com.fiap.vendaCRUD.repository.EnderecoRepository;
 import br.com.fiap.vendaCRUD.repository.UsuarioRepository;
+import br.com.fiap.vendaCRUD.repository.VendaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +27,12 @@ import java.util.List;
 public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private EnderecoRepository enderecoRepository;
+
+    @Autowired
+    private VendaRepository vendaRepository;
 
     //GET
     @GetMapping
@@ -64,11 +78,34 @@ public class UsuarioController {
         return ResponseEntity.ok(new DetalhesUsuarioDto(usuario));
     }
 
-    // GET USUARIO ENDERECO
 
     // POST USUARIO ENDERECO
-
-    // GET USUARIO VENDA
+    @PostMapping("{id}/enderecos")
+    @Transactional
+    public ResponseEntity<DetalhesEnderecoDto> post(@PathVariable("id") Long id,
+                                                    @RequestBody @Valid CadastroEnderecoDto enderecoDto,
+                                                    UriComponentsBuilder uriBuilder){
+        var usuario = usuarioRepository.getReferenceById(id);
+        var endereco = new Endereco(enderecoDto, usuario);
+        enderecoRepository.save(endereco);
+        var uri = uriBuilder.path("enderecos/{id}").buildAndExpand(endereco.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesEnderecoDto(endereco));
+    }
 
     // POST USUARIO VENDA
+    @PostMapping("{id}/vendas")
+    @Transactional
+    public ResponseEntity<DetalhesVendaDto> post(@PathVariable("id") Long id,
+                                                 @RequestBody @Valid CadastroVendaDto vendaDto,
+                                                 UriComponentsBuilder uriBuilder){
+        var usuario = usuarioRepository.getReferenceById(id);
+        var venda = new Venda(vendaDto, usuario);
+        vendaRepository.save(venda);
+        var uri = uriBuilder.path("vendas/{id}").buildAndExpand(venda.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesVendaDto(venda));
+    }
+
+    // GET USUARIO ENDERECO
+
+    // GET USUARIO VENDA
 }

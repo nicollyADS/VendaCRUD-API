@@ -47,12 +47,13 @@ public class Endereco {
     private Usuario usuario;
 
 
-    public Endereco(CadastroEnderecoDto enderecoDto) {
+    public Endereco(CadastroEnderecoDto enderecoDto, Usuario usuario) {
         rua = enderecoDto.rua();
         numero = enderecoDto.numero();
         cidade =enderecoDto.cidade();
         estado = enderecoDto.estado();
         cep = enderecoDto.cep();
+        this.usuario = usuario;
     }
 
     public void atualizarInformacoesEndereco(AtualizacaoEnderecoDto dto) {

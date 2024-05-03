@@ -37,15 +37,15 @@ public class ProdutoController {
     }
 
     //POST
-    @PostMapping
-    @Transactional
-    public ResponseEntity<DetalhesProdutoDto> post(@RequestBody @Valid CadastroProdutoDto produtoDto,
-                                                    UriComponentsBuilder uriBuilder){
-        var produto = new Produto(produtoDto);
-        produtoRepository.save(produto);
-        var uri = uriBuilder.path("produtos/{id}").buildAndExpand(produto.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DetalhesProdutoDto(produto));
-    }
+//    @PostMapping
+//    @Transactional
+//    public ResponseEntity<DetalhesProdutoDto> post(@RequestBody @Valid CadastroProdutoDto produtoDto,
+//                                                    UriComponentsBuilder uriBuilder){
+//        var produto = new Produto(produtoDto);
+//        produtoRepository.save(produto);
+//        var uri = uriBuilder.path("produtos/{id}").buildAndExpand(produto.getId()).toUri();
+//        return ResponseEntity.created(uri).body(new DetalhesProdutoDto(produto));
+//    }
 
     //DELETE
     @DeleteMapping("{id}")

@@ -51,8 +51,9 @@ public class Venda{
 
 
 
-    public Venda(CadastroVendaDto vendaDto) {
+    public Venda(CadastroVendaDto vendaDto, Usuario usuario) {
         quantidade = vendaDto.quantidade();
+        this.usuario = usuario;
     }
 
     public void atualizarInformacoesVenda(AtualizacaoVendaDto dto) {
