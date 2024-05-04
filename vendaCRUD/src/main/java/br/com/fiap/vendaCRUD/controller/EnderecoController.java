@@ -38,16 +38,6 @@ public class EnderecoController {
         return ResponseEntity.ok(new DetalhesEnderecoDto(endereco));
     }
 
-    //POST
-//    @PostMapping
-//    @Transactional
-//    public ResponseEntity<DetalhesEnderecoDto> post(@RequestBody @Valid CadastroEnderecoDto enderecoDto,
-//                                                    UriComponentsBuilder uriBuilder){
-//        var endereco = new Endereco(enderecoDto);
-//        enderecoRepository.save(endereco);
-//        var uri = uriBuilder.path("enderecos/{id}").buildAndExpand(endereco.getId()).toUri();
-//        return ResponseEntity.created(uri).body(new DetalhesEnderecoDto(endereco));
-//    }
 
     //DELETE
     @DeleteMapping("{id}")

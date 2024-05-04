@@ -37,16 +37,6 @@ public class VendaController {
         return ResponseEntity.ok(new DetalhesVendaDto(venda));
     }
 
-//    //POST
-//    @PostMapping
-//    @Transactional
-//    public ResponseEntity<DetalhesVendaDto> post(@RequestBody @Valid CadastroVendaDto vendaDto,
-//                                                   UriComponentsBuilder uriBuilder){
-//        var venda = new Venda(vendaDto);
-//        vendaRepository.save(venda);
-//        var uri = uriBuilder.path("vendas/{id}").buildAndExpand(venda.getId()).toUri();
-//        return ResponseEntity.created(uri).body(new DetalhesVendaDto(venda));
-//    }
 
     //DELETE
     @DeleteMapping("{id}")
