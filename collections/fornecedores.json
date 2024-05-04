@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "6b0ba2ec-ff68-400d-9e35-df8ade23d6de",
+		"name": "fornecedores",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "post fornecedor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Carlos Santos\",\r\n  \"telefone\": \"(31) 55555-5555\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/fornecedores",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fornecedores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post 2 fornecedor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Ana Souza\",\r\n  \"telefone\": \"(41) 98765-4321\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/fornecedores",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fornecedores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post fornecedor produto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Camiseta\",\r\n  \"descricao\": \"Camiseta de algodão\",\r\n  \"preco\": 29.99,\r\n  \"tipoProduto\": \"ROUPAS\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/fornecedores/1/produtos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fornecedores",
+						"1",
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fornecedor listagem",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/fornecedores",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fornecedores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fornecedor paginacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/fornecedores?sort=nome",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fornecedores"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "nome"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put fornecedor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Ana Souza\",\r\n  \"telefone\": \"(41) 98765-4555\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/fornecedores/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fornecedores",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete fornecedor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/fornecedores/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fornecedores",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
