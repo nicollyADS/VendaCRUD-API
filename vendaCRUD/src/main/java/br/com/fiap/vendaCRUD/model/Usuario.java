@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 
 @Entity
-@Table(name="T_USUARIO")
+@Table(name="TAB_USUARIO")
 public class Usuario {
 
     @Id
@@ -41,11 +41,11 @@ public class Usuario {
     private DadosUsuario dadosUsuario;
 
     //usuario e endereco
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     private List<Endereco> enderecos;
 
     //usuario e venda
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     private List<Venda> vendas;
 
 

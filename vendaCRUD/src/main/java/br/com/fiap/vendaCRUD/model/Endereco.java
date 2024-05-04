@@ -15,7 +15,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @NoArgsConstructor
 
 @Entity
-@Table(name="T_ENDERECO")
+@Table(name="TAB_ENDERECO")
 public class Endereco {
 
     @Id

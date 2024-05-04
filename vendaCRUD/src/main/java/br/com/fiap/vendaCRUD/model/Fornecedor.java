@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 
 @Entity
-@Table(name="T_FORNECEDOR")
+@Table(name="TAB_FORNECEDOR")
 public class Fornecedor {
 
     @Id
@@ -33,7 +33,7 @@ public class Fornecedor {
 
     //relacionamentos
     //fornecedor e produto
-    @OneToMany(mappedBy = "fornecedor")
+    @OneToMany(mappedBy = "fornecedor", cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     private List<Produto> produtos;
 
 

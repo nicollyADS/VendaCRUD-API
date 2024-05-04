@@ -105,7 +105,4 @@ public class UsuarioController {
         return ResponseEntity.created(uri).body(new DetalhesVendaDto(venda));
     }
 
-    // GET USUARIO ENDERECO
-
-    // GET USUARIO VENDA
 }

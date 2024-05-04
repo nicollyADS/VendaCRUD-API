@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 
 @Entity
-@Table(name="T_VENDA")
+@Table(name="TAB_VENDA")
 @EntityListeners(AuditingEntityListener.class)
 public class Venda{
 
@@ -38,7 +38,7 @@ public class Venda{
     //relacionamentos
     //venda e produto - tabela associativa
     @ManyToMany
-    @JoinTable(name="T_PRODUTO_VENDA",
+    @JoinTable(name="TAB_PRODUTO_VENDA",
             joinColumns = @JoinColumn(name="id_venda"),
             inverseJoinColumns = @JoinColumn(name="id_produto"))
     private List<Produto> produtos;
